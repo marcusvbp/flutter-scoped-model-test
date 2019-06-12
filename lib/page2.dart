@@ -7,7 +7,7 @@ class PageTwo extends StatefulWidget {
   final Color color;
   final String title;
 
-  PageTwo({Key key, MaterialColor this.color, String this.title}) : super(key: key);
+  PageTwo({Key key, this.color, this.title}) : super(key: key);
 
   _PageTwoState createState() => _PageTwoState();
 }

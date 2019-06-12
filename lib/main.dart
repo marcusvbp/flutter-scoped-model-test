@@ -3,6 +3,7 @@ import 'package:radio_test/home.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:radio_test/models/Player.dart';
 import 'package:radio_test/models/User.dart';
+import 'page3.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,28 +12,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Scoped Model Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: ScopedModel<Player>(
+    return ScopedModel<Player>(
         model: Player(),
         child: ScopedModel<User>(
           model: User(),
-          child: MyHomePage(title: 'Flutter Scoped Model Demo'),
+          child: MaterialApp(
+            title: 'Flutter Scoped Model Demo',
+            theme: ThemeData(
+              // This is the theme of your application.
+              //
+              // Try running your application with "flutter run". You'll see the
+              // application has a blue toolbar. Then, without quitting the app, try
+              // changing the primarySwatch below to Colors.green and then invoke
+              // "hot reload" (press "r" in the console where you ran "flutter run",
+              // or simply save your changes to "hot reload" in a Flutter IDE).
+              // Notice that the counter didn't reset back to zero; the application
+              // is not restarted.
+              primarySwatch: Colors.blue,
+            ),
+            home: MyHomePage(title: 'Flutter Scoped Model Demo')
+          ),
         )
-      )
-    );
+      );
   }
 }
 
@@ -70,6 +71,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.star),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PageThree(title: 'New Page', color: Colors.white)));
+            },
+          )
+        ],
       ),
       body: Home(),
       

@@ -6,7 +6,7 @@ class PageOne extends StatefulWidget {
   final Color color;
   final String title;
 
-  PageOne({Key key, MaterialColor this.color, String this.title}) : super(key: key);
+  PageOne({Key key, this.color, this.title}) : super(key: key);
 
   _PageOneState createState() => _PageOneState();
 }
